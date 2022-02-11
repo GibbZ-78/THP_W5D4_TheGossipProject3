@@ -8,8 +8,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :age                        # computed from 'birthdate'
       t.date :birthdate                     # birthdate prompted to compute 'age' and fill 'is_adult' accordingly
       t.boolean :is_adult                   # true if age >=18 (or 21?), false elseway
-      t.references :city , index: true      # 1 user lives in 1 and only 1 city
-      t.timestamps
+      t.belongs_to :city , index: true      # 1 user lives in 1 city only
+      t.timestamps                          # created_at & update_at automated creation
     end
   end
 end
+# Table definition complete
